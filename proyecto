@@ -1,0 +1,26 @@
+rutas = ["Heredia-Sarapiquí", "San José-Turrialba", "Liberia-Nicoya", "Alajuela-La Fortuna", "Quepos-Jacó"]
+
+precios = ["Tiquete válido por un solo viaje: 500 colones", "Tiquete válido por un día: 1000 colones", "Tiquete válido por una semana: 5000 colones"]
+
+while True:
+    opcion_menu = int(input("Menú:\n1. Ver rutas\n2. Ver precios\n3. Adquirir tiquetes\n4. Disponibilidad de asientos\n5. Salir\n"))
+    if opcion_menu == 1:
+        print("Rutas disponibles:")
+        for ruta in rutas:
+            print(ruta)
+        input("Presione 5 para volver al menú principal\n")
+    elif opcion_menu == 2:
+        print("Viendo precios:")
+        for precio in precios:
+            print(precio)
+        input("Presione 5 para volver al menú principal\n")
+        
+    elif opcion_menu == 3:
+            print("Adquiriendo tiquetes")
+        
+    elif opcion_menu == 4:
+           print("Mostrando disponibilidad de asientos")
+      
+    else:
+        print("Gracias por usar nuestro servicio")
+
