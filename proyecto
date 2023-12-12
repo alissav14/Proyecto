@@ -1,3 +1,4 @@
+
 #Se definen los arrelgos
 rutas = ["Heredia-Sarapiquí", "San José-Turrialba", "Liberia-Nicoya", "Alajuela-La Fortuna", "Quepos-Jacó"]
 precios = ["Tiquete válido por un solo viaje: 500 colones", "Tiquete válido por un día: 1000 colones", "Tiquete válido por una semana: 5000 colones"]
@@ -7,7 +8,21 @@ asientos_ruta3 = [['O', 'O'], ['O', 'O'], ['O', 'O'], ['O', 'O'], ['O', 'O']]
 asientos_ruta4 = [['O', 'O'], ['O', 'O'], ['O', 'O'], ['O', 'O'], ['O', 'O']]
 asientos_ruta5 = [['O', 'O'], ['O', 'O'], ['O', 'O'], ['O', 'O'], ['O', 'O']]
 
-#Sub programas
+
+info_ventas = []
+info_precios = []
+info_tiquetes = []
+    
+def archivo_plano(info_ventas, info_precios, info_tiquetes):
+    archivo_ventas = sum(info_ventas)
+    archivo_precios = sum(info_precios)
+    archivo_tiquetes = sum(info_tiquetes)
+    with open ("archivo_plano.txt","w") as file:
+            file.write("Archivo de Ventas: \n")
+            file.write (f"El total de ventas realizadas fue de: {archivo_ventas} \n")
+            file.write(f"El total de ingresos fue de: {archivo_precios} \n")
+            file.write(f"El total de tiquetes vendidos fue de: {archivo_tiquetes}")
+
 def ver_rutas():
     print("Rutas disponibles:")
     for x, ruta in enumerate (rutas, 1):
@@ -20,6 +35,7 @@ def adquirir_tiquetes():
     seleccion_ruta = int(input("Seleccione una ruta (1-5): \n"))
     seleccion_precio = int(input("Selecciones un precio (1-3); \n"))
     seleccion_asientos = int(input("Seleccione la cantidad de asientos (1-10):\n"))
+ 
 
     if seleccion_precio ==1:
         precio=500
@@ -29,8 +45,11 @@ def adquirir_tiquetes():
         precio=5000
     subtotal = precio * seleccion_asientos
     iva = subtotal * 0.13
-    total = subtotal + iva 
+    total = subtotal + iva
+
+        
     def factura():
+            
         print("Asientos ocupados exitosamente. ¡Gracias por su compra!")
         print("El subtotal es: ", subtotal)
         print("El iva es", iva)
@@ -78,6 +97,10 @@ def adquirir_tiquetes():
                 print(asientos_ruta1[x][y], end=' ')
             print()
         print()
+        info_ventas.append(1)
+        ingreso_compra = total
+        info_precios.append(ingreso_compra)
+        info_tiquetes.append(seleccion_asientos)
         factura()
 ### Mismo codigo para comprar en la ruta 2###
     elif seleccion_ruta == 2:
@@ -108,6 +131,10 @@ def adquirir_tiquetes():
                 print(asientos_ruta2[x][y], end=' ')
             print()
         print()
+        info_ventas.append(1)
+        ingreso_compra = total
+        info_precios.append(ingreso_compra)
+        info_tiquetes.append(seleccion_asientos)
         factura()
 ### Mismo codigo para la ruta 3 ###
     elif seleccion_ruta == 3:
@@ -138,6 +165,10 @@ def adquirir_tiquetes():
                 print(asientos_ruta3[x][y], end=' ')
             print()
         print()
+        info_ventas.append(1)
+        ingreso_compra = total
+        info_precios.append(ingreso_compra)
+        info_tiquetes.append(seleccion_asientos)
         factura()
 ### Mismo codigo para la ruta 4 ###
     elif seleccion_ruta == 4:
@@ -168,7 +199,15 @@ def adquirir_tiquetes():
                 print(asientos_ruta4[x][y], end=' ')
             print()
         print()
+        info_ventas.append(1)
+        ingreso_compra = total
+        info_precios.append(ingreso_compra)
+        info_tiquetes.append(seleccion_asientos)
         factura()
+
+
+
+        
     ### Mismo codigo para la ruta 5 ###
     elif seleccion_ruta == 5:
         print("Disponibles -> O")
@@ -197,10 +236,15 @@ def adquirir_tiquetes():
                 print(asientos_ruta5[x][y], end=' ')
             print()
         print()
+        info_ventas.append(1)
+        ingreso_compra = total
+        info_precios.append(ingreso_compra)
+        info_tiquetes.append(seleccion_asientos)
         factura()
     else:
         print("Dato Incorrecto")
         seleccion_ruta= int(input("Seleccione una ruta (1-5)"))
+    
 
 
         
@@ -254,8 +298,8 @@ def consultar_espacio():
         print()
     else:
         print ("Dato incorrecto")
-        int(input("Seleccione una ruta disponible (1-5)"))
-        
+        int(input("Seleccione una ruta disponible (1-5)")       
+
 #Menú
 opcion = 0
 while opcion !=5:
@@ -275,8 +319,7 @@ while opcion !=5:
         input("Presione ENTER para volver al menú principal \n")
     elif opcion == 5:
         print ("Gracias por usar nuestro servicio")
+        archivo_plano(info_ventas, info_precios, info_tiquetes)
         break
     else:
         print("Ingrese una opción valida")
-        
-
